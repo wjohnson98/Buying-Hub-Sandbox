@@ -192,7 +192,7 @@ body{font-family:'Host Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;back
 
 <script>
 (function(){
-var P=new URLSearchParams(location.search),dealId=P.get('id'),repId=P.get('rep'),pg=P.get('page'),langParam=P.get('lang');
+var P=new URLSearchParams(location.search),dealId=P.get('id'),repId=P.get('rep'),pg=P.get('page'),langParam=P.get('lang'),propParam=P.get('prop');
 
 // ── Language System ──
 var LANGS=['en','pt','es'];
@@ -270,6 +270,8 @@ function applyLang(lang){
       }else{el.textContent=txt}
     }
   });
+  var badgeEl=document.querySelector('[data-t="badge"]');
+  if(badgeEl)badgeEl.textContent=propParam||'Your Personalized Hub';
   var menu=document.getElementById('langMenu');
   menu.innerHTML=LANGS.map(function(l){return'<button class="lang-opt'+(l===lang?' on':'')+'" onclick="setLang(\''+l+'\')">'+LANG_NAMES[l]+'</button>'}).join('');
   document.getElementById('if-home').src=getUrl('home',lang);
@@ -290,7 +292,7 @@ function applyLang(lang){
   }
   buildProposal();
   var bf=document.getElementById('if-book');
-  if(bf){bf.src='about:blank';bf.setAttribute('data-src',schedLink);if(cur==='book'){bf.src=schedLink;loaded.book=true}}
+  if(bf&&schedLink){bf.src='about:blank';bf.setAttribute('data-src',schedLink);if(cur==='book'){bf.src=schedLink;loaded.book=true}}
   document.getElementById('langDd').classList.remove('open');
 }
 window.setLang=function(l){applyLang(l)};
@@ -402,8 +404,12 @@ window.downloadFile=function(){
 };
 
 // ── Scheduling link ──
-var dl='https://meetings.salesloft.com/cloudbeds/lorenzopickett',schedLink=dl;
-if(repId&&RL[repId.toLowerCase()])schedLink=RL[repId.toLowerCase()];
+var schedLink=repId?'https://meetings.salesloft.com/cloudbeds/'+repId.toLowerCase():'';
+if(!repId){
+  document.querySelectorAll('[data-p="book"]').forEach(function(el){el.style.display='none'});
+  var bookCta=document.querySelector('.hdr-cta[data-t="bookBtn"]');
+  if(bookCta)bookCta.style.display='none';
+}
 
 // ── Build Proposal ──
 function buildProposal(){
