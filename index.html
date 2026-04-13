@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloudbeds Buying Hub</title>
+<link rel="icon" type="image/png" href="https://play-lh.googleusercontent.com/ujyV6P8AM5IwYfAiTkEbuqNQDIGsLf7hLFGcN1Z7CiA3HY3ek0rC4ZY5L-DgC2Itmq7Fwu9tf9cnlo_RL0A-bxQ">
+<script async src="https://js.qualified.com/qualified.js?token=97ddMkPtkP2z5P29"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+@font-face{font-family:"Host Grotesk";font-style:normal;font-weight:300;font-display:swap;src:url('https://www.cloudbeds.com/wp-content/themes/cloudbeds-rebrand/assets/fonts/host/HostGrotesk-Light.ttf') format('truetype')}
+@font-face{font-family:"Host Grotesk";font-style:normal;font-weight:400;font-display:swap;src:url('https://www.cloudbeds.com/wp-content/themes/cloudbeds-rebrand/assets/fonts/host/HostGrotesk-Regular.ttf') format('truetype')}
+@font-face{font-family:"Host Grotesk";font-style:normal;font-weight:500;font-display:swap;src:url('https://www.cloudbeds.com/wp-content/themes/cloudbeds-rebrand/assets/fonts/host/HostGrotesk-Medium.ttf') format('truetype')}
+@font-face{font-family:"Host Grotesk";font-style:normal;font-weight:600;font-display:swap;src:url('https://www.cloudbeds.com/wp-content/themes/cloudbeds-rebrand/assets/fonts/host/HostGrotesk-SemiBold.ttf') format('truetype')}
+:root{--cb-coffee-05:#261C0A;--cb-coffee-03:#99876B;--cb-chalk-01:#FBFBF6;--cb-chalk-05:#F2F2E9;--cb-chalk-07:#D9D9CC;--cb-chalk-09:#B8B8A9;--cb-blue-01:#DFEEFF;--cb-blue-03:#BFDEFF;--cb-blue-05:#99CBFF;--cb-blue-07:#4DA4FF;--cb-blue-09:#18317A;--cb-green-05:#90D092;--cb-white:#FFFFFF;--sidebar-w:68px;--header-h:56px}
+body{font-family:'Host Grotesk',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--cb-chalk-01);color:var(--cb-coffee-05);min-height:100vh;-webkit-font-smoothing:antialiased;font-weight:300;line-height:1.6;overflow:hidden}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--header-h);padding:0 20px;background:var(--cb-coffee-05);display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}
+.hdr-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.hdr-logo img{height:20px;filter:brightness(0) invert(1)}
+.hdr-div{width:1px;height:20px;background:rgba(255,255,255,.2)}
+.hdr-badge{color:var(--cb-blue-05);font-size:12px;font-weight:500;letter-spacing:.5px}
+.hdr-right{display:flex;align-items:center;gap:12px}
+.hdr-cta{background:var(--cb-blue-07);color:white;padding:7px 16px;border-radius:6px;font-size:12px;font-weight:500;font-family:inherit;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s;text-decoration:none}
+.hdr-cta:hover{background:var(--cb-blue-05);color:var(--cb-coffee-05)}
+.hdr-cta svg{width:12px;height:12px}
+/* Language dropdown */
+.lang-dd{position:relative}
+.lang-btn{background:none;border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:7px 10px;font-family:inherit;font-size:12px;font-weight:500;color:var(--cb-chalk-09);cursor:pointer;display:inline-flex;align-items:center;gap:5px;transition:all .2s}
+.lang-btn:hover{border-color:rgba(255,255,255,.4);color:white}
+.lang-btn svg{width:14px;height:14px;fill:currentColor}
+.lang-menu{display:none;position:absolute;right:0;top:calc(100% + 6px);background:var(--cb-chalk-01);border:1px solid var(--cb-chalk-07);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.12);overflow:hidden;z-index:300;min-width:130px}
+.lang-dd.open .lang-menu{display:block}
+.lang-opt{display:block;width:100%;padding:10px 16px;font-family:inherit;font-size:13px;color:var(--cb-coffee-05);background:none;border:none;text-align:left;cursor:pointer;transition:background .15s}
+.lang-opt:hover{background:var(--cb-chalk-05)}
+.lang-opt.on{font-weight:600;color:var(--cb-blue-07)}
+#sidebar{position:fixed;top:var(--header-h);left:0;bottom:0;width:var(--sidebar-w);background:var(--cb-coffee-05);z-index:150;overflow:hidden;border-right:1px solid rgba(255,255,255,.06);padding-top:4px}
+#sidebar a{display:flex;flex-direction:column;align-items:center;justify-content:center;width:56px;margin:0 auto;padding:8px 4px;gap:3px;border-radius:8px;cursor:pointer;transition:all .2s;text-decoration:none;position:relative}
+#sidebar a svg{width:18px;height:18px;color:var(--cb-chalk-09);transition:color .2s;flex-shrink:0}
+#sidebar a span{font-size:9px;font-weight:500;color:var(--cb-chalk-09);text-align:center;line-height:1.1;transition:color .2s;letter-spacing:.2px}
+#sidebar a:hover svg,#sidebar a:hover span{color:var(--cb-blue-05)}
+#sidebar a:hover{background:rgba(255,255,255,.06)}
+#sidebar a.on{background:rgba(77,164,255,.12)}
+#sidebar a.on svg{color:var(--cb-blue-07)}
+#sidebar a.on span{color:var(--cb-blue-05)}
+#sidebar a.on::before{content:'';position:absolute;left:-6px;top:8px;bottom:8px;width:3px;background:var(--cb-blue-07);border-radius:0 3px 3px 0}
+.pages{position:fixed;top:var(--header-h);left:var(--sidebar-w);right:0;bottom:0;overflow:hidden}
+.pg{position:absolute;inset:0;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .3s ease,visibility .3s ease;overflow-y:auto;overflow-x:hidden;background:var(--cb-chalk-01);z-index:1}
+.pg.on{opacity:1;visibility:visible;pointer-events:auto;z-index:10}
+.pg iframe{width:100%;height:100%;border:none;display:block}
+#pg-home{background:var(--cb-coffee-05)}
+.prop{display:flex;flex-direction:column;align-items:center;padding:60px 48px;text-align:center}
+.prop-icon{width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;background:#D7EDB8;color:#3A533A}
+.prop-icon.amber{background:var(--cb-chalk-05);color:var(--cb-chalk-09)}
+.prop h1{font-size:clamp(24px,3.5vw,34px);font-weight:300;margin-bottom:10px;line-height:1.2}
+.prop-desc{font-size:15px;color:var(--cb-coffee-03);font-weight:300;max-width:520px;margin:0 auto 28px;line-height:1.7}
+.prop-checks{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.prop-chk{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--cb-coffee-05);font-weight:400}
+.prop-chk svg{color:var(--cb-green-05);flex-shrink:0}
+.prop-btn{display:inline-flex;align-items:center;gap:8px;background:var(--cb-coffee-05);color:var(--cb-chalk-05);padding:14px 32px;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none;transition:all .3s;font-family:inherit;border:none;cursor:pointer}
+.prop-btn:hover{background:var(--cb-blue-07);color:white;transform:translateY(-1px);box-shadow:0 8px 24px rgba(77,164,255,.25)}
+.prop-note{margin-top:14px;font-size:12px;color:var(--cb-chalk-09)}
+.prop-hr{width:100%;max-width:500px;height:1px;background:var(--cb-chalk-07);margin:40px 0}
+.prop-stats{display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.prop-st{text-align:center}
+.prop-st b{font-size:24px;font-weight:600;color:var(--cb-coffee-05);line-height:1;display:block}
+.prop-st small{font-size:11px;color:var(--cb-coffee-03);font-weight:400;margin-top:4px;display:block}
+.prop-foot{margin-top:40px;font-size:13px;color:var(--cb-chalk-09);font-weight:300;max-width:440px;line-height:1.6}
+.int-pg{width:100%;height:100%;background:linear-gradient(180deg,#7CB4E8 0%,#A8D0F4 25%,#C8E2F8 40%,#E4F0F8 55%,#EEF4E8 75%,#E8ECC8 100%);display:flex;flex-direction:column;overflow:hidden}
+.int-c{width:100%;flex:1;min-height:0;background:rgba(255,255,255,.45);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);display:flex;flex-direction:column;overflow:visible;position:relative}
+.int-ind{position:absolute;top:0;height:3px;background:var(--cb-coffee-05);border-radius:0 0 3px 3px;transition:left .3s ease,width .3s ease}
+.int-tabs{display:flex;align-items:center;justify-content:center;gap:4px;padding:16px 20px 0;background:#FFF878}
+.int-tb{padding:10px 20px;font-family:inherit;font-size:14px;font-weight:400;color:var(--cb-coffee-03);background:none;border:none;cursor:pointer;border-radius:10px 10px 0 0;transition:all .2s}
+.int-tb:hover{color:var(--cb-coffee-05)}
+.int-tb.on{color:var(--cb-coffee-05);font-weight:500}
+.int-dv{width:100%;height:1px;background:#FFF878}
+.int-body{flex:1;min-height:0;background:var(--cb-white);overflow:hidden;position:relative}
+.int-pn{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.int-pn.on{opacity:1;visibility:visible}
+/* ADMIN */
+.adm{display:none}
+.adm.on{display:block;position:fixed;top:var(--header-h);left:0;right:0;bottom:0;overflow-y:auto;padding:40px 48px;background:var(--cb-chalk-01);z-index:300}
+.adm h2{font-size:24px;font-weight:300;margin-bottom:8px}
+.adm .sub{font-size:14px;color:var(--cb-coffee-03);margin-bottom:24px;font-weight:300}
+.adm-tabs{display:flex;gap:0;border-bottom:1px solid var(--cb-chalk-07);margin-bottom:24px}
+.adm-tab{padding:12px 24px;font-family:inherit;font-size:14px;font-weight:400;color:var(--cb-coffee-03);background:none;border:none;cursor:pointer;position:relative;transition:all .2s}
+.adm-tab:hover{color:var(--cb-coffee-05)}
+.adm-tab.on{color:var(--cb-coffee-05);font-weight:500}
+.adm-tab.on::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:2px;background:var(--cb-blue-07)}
+.adm-panel{display:none}
+.adm-panel.on{display:block}
+.adm-card{background:var(--cb-white);border:1px solid var(--cb-chalk-07);padding:24px;margin-bottom:24px;border-radius:8px}
+.adm table{width:100%;border-collapse:collapse;font-size:14px}
+.adm th{text-align:left;padding:12px 16px;background:var(--cb-chalk-05);border-bottom:1px solid var(--cb-chalk-07);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--cb-coffee-03)}
+.adm td{padding:12px 16px;border-bottom:1px solid var(--cb-chalk-07)}
+.adm .uc{font-size:12px;color:var(--cb-coffee-03);word-break:break-all;max-width:320px}
+.adm-form{display:flex;gap:12px;margin-bottom:24px;flex-wrap:wrap;align-items:flex-end}
+.adm-f{display:flex;flex-direction:column;gap:4px}
+.adm-f label{font-size:12px;font-weight:500;color:var(--cb-coffee-03)}
+.adm-f input,.adm-f textarea{padding:10px 14px;border:1px solid var(--cb-chalk-07);background:var(--cb-white);font-family:inherit;font-size:14px;color:var(--cb-coffee-05);outline:none;border-radius:6px;width:100%}
+.adm-f input:focus,.adm-f textarea:focus{border-color:var(--cb-blue-07)}
+.adm-f textarea{min-height:60px;resize:vertical}
+.adm-btn{padding:10px 20px;font-family:inherit;font-size:13px;font-weight:500;border:none;cursor:pointer;border-radius:6px;background:var(--cb-coffee-05);color:var(--cb-chalk-05);transition:all .2s}
+.adm-btn:hover{background:var(--cb-blue-07);color:white}
+.adm-del{background:none;color:#c0392b;border:1px solid #c0392b;padding:6px 14px;font-size:12px;cursor:pointer;border-radius:6px}
+.adm-del:hover{background:#c0392b;color:white}
+.adm-note{margin-top:20px;padding:16px;background:var(--cb-blue-01);border:1px solid var(--cb-blue-03);font-size:13px;color:var(--cb-coffee-05);line-height:1.6;font-weight:300;border-radius:8px}
+.adm-note code{background:var(--cb-chalk-05);padding:2px 6px;font-size:12px;border-radius:3px}
+.adm-back{display:inline-flex;align-items:center;gap:6px;color:var(--cb-blue-07);text-decoration:none;font-size:14px;margin-bottom:20px}
+.lang-section{margin-bottom:32px}
+.lang-section h3{font-size:16px;font-weight:500;margin-bottom:4px}
+.lang-section p{font-size:13px;color:var(--cb-coffee-03);margin-bottom:16px;font-weight:300}
+.lang-grid{display:grid;grid-template-columns:120px 1fr 1fr 1fr;gap:8px;align-items:center;margin-bottom:8px}
+.lang-grid-hdr{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--cb-coffee-03);padding:8px 0}
+.lang-grid input,.lang-grid textarea{padding:8px 10px;border:1px solid var(--cb-chalk-07);border-radius:6px;font-family:inherit;font-size:13px;width:100%}
+.lang-grid input:focus,.lang-grid textarea:focus{outline:none;border-color:var(--cb-blue-07)}
+.lang-grid .lbl{font-size:13px;font-weight:500;color:var(--cb-coffee-05);padding:8px 0}
+#mobnav{display:none}
+@media(max-width:768px){
+  :root{--sidebar-w:0px}#sidebar{display:none}.pages{left:0;bottom:60px}.hdr{padding:0 12px}.prop{padding:40px 20px}.prop-checks{flex-direction:column;align-items:center;gap:12px}.prop-stats{gap:24px}
+  #mobnav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--cb-coffee-05);border-top:1px solid rgba(255,255,255,.1);padding:4px 0 env(safe-area-inset-bottom,4px)}
+  #mobnav a{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:6px 4px;gap:2px;text-decoration:none}
+  #mobnav a svg{width:18px;height:18px;color:var(--cb-chalk-09)}
+  #mobnav a span{font-size:9px;font-weight:500;color:var(--cb-chalk-09)}
+  #mobnav a.on{background:rgba(77,164,255,.15)}
+  #mobnav a.on svg{color:var(--cb-blue-07)}
+  #mobnav a.on span{color:var(--cb-blue-05)}
+  .lang-grid{grid-template-columns:1fr;gap:4px}
+  .lang-grid-hdr{display:none}
+}
+</style>
+</head>
+<body>
+<header class="hdr">
+  <a href="https://www.cloudbeds.com" target="_blank" class="hdr-logo"><img src="https://www.cloudbeds.com/wp-content/uploads/2025/08/logo-footer.svg" alt="cloudbeds"><div class="hdr-div"></div><span class="hdr-badge" data-t="badge">Buying Hub</span></a>
+  <div class="hdr-right">
+    <div class="lang-dd" id="langDd">
+      <button class="lang-btn" onclick="document.getElementById('langDd').classList.toggle('open')" id="langBtnLabel">EN <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 256 256"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm81.57,64H169.19a132.58,132.58,0,0,0-25.73-50.67A90.29,90.29,0,0,1,209.57,90ZM218,128a89.7,89.7,0,0,1-3.83,26H171.81a155.43,155.43,0,0,0,0-52h42.36A89.7,89.7,0,0,1,218,128Zm-90,87.83a110,110,0,0,1-15.19-19.45A124.24,124.24,0,0,1,99.35,166h57.3a124.24,124.24,0,0,1-13.46,30.38A110,110,0,0,1,128,215.83ZM96.45,154a139.18,139.18,0,0,1,0-52h63.1a139.18,139.18,0,0,1,0,52ZM38,128a89.7,89.7,0,0,1,3.83-26H84.19a155.43,155.43,0,0,0,0,52H41.83A89.7,89.7,0,0,1,38,128Zm90-87.83a110,110,0,0,1,15.19,19.45A124.24,124.24,0,0,1,156.65,90H99.35a124.24,124.24,0,0,1,13.46-30.38A110,110,0,0,1,128,40.17Zm-15.46-.84A132.58,132.58,0,0,0,86.81,90H46.43A90.29,90.29,0,0,1,112.54,39.33ZM46.43,166H86.81a132.58,132.58,0,0,0,25.73,50.67A90.29,90.29,0,0,1,46.43,166Zm97,50.67A132.58,132.58,0,0,0,169.19,166h40.38A90.29,90.29,0,0,1,143.46,216.67Z"/></svg></button>
+      <div class="lang-menu" id="langMenu"></div>
+    </div>
+    <a class="hdr-cta" onclick="go('book')" data-t="bookBtn">Book a Meeting <svg viewBox="0 0 256 256" fill="currentColor"><path d="M200,64V168a8,8,0,0,1-16,0V83.31L69.66,197.66a8,8,0,0,1-11.32-11.32L172.69,72H88a8,8,0,0,1,0-16H192A8,8,0,0,1,200,64Z"/></svg></a>
+  </div>
+</header>
+
+<nav id="sidebar"><a class="on" data-p="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-t="nav_home">Home</span></a><a data-p="solutions" onclick="go('solutions')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><span data-t="nav_solutions">Solutions</span></a><a data-p="success" onclick="go('success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span data-t="nav_success">Success</span></a><a data-p="customers" onclick="go('customers')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span data-t="nav_customers">Customers</span></a><a data-p="integrations" onclick="go('integrations')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 01-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 10-4.76 1.524c.13.466.034.927-.405 1.178l-.075.043a1.248 1.248 0 01-.621.166H9.813a2.41 2.41 0 01-2.41-2.41v-1.058c0-.544-.354-.997-.868-1.158a2.5 2.5 0 111.58-4.682c.482.17.988.034 1.298-.276l.043-.045c.293-.309.378-.752.263-1.163a2.501 2.501 0 014.735-1.638c.18.456.52.876 1 .946a.946.946 0 00.798-.266l1.637-1.637c.47-.47 1.088-.706 1.704-.706s1.234.236 1.704.706l1.568 1.568a1.026 1.026 0 01.289.878"/></svg><span data-t="nav_integrations">Integrations</span></a><a data-p="demo" onclick="go('demo')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span data-t="nav_demo">Demo</span></a><div style="width:32px;height:1px;background:rgba(255,255,255,.1);margin:6px auto"></div><a data-p="packages" onclick="go('packages')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><span data-t="nav_packages">Packages</span></a><a data-p="proposal" onclick="go('proposal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-t="nav_proposal">Proposal</span></a><a data-p="roi" onclick="go('roi')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span data-t="nav_roi">ROI</span></a><div style="width:32px;height:1px;background:rgba(255,255,255,.1);margin:6px auto"></div><a data-p="book" onclick="go('book')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-t="nav_book">Book</span></a></nav>
+
+<nav id="mobnav"><a class="on" data-p="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span data-t="nav_home">Home</span></a><a data-p="solutions" onclick="go('solutions')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg><span data-t="nav_solutions">Solutions</span></a><a data-p="success" onclick="go('success')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><span data-t="nav_success">Success</span></a><a data-p="customers" onclick="go('customers')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg><span data-t="nav_customers">Customers</span></a><a data-p="integrations" onclick="go('integrations')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 01-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 10-4.76 1.524c.13.466.034.927-.405 1.178l-.075.043a1.248 1.248 0 01-.621.166H9.813a2.41 2.41 0 01-2.41-2.41v-1.058c0-.544-.354-.997-.868-1.158a2.5 2.5 0 111.58-4.682c.482.17.988.034 1.298-.276l.043-.045c.293-.309.378-.752.263-1.163a2.501 2.501 0 014.735-1.638c.18.456.52.876 1 .946a.946.946 0 00.798-.266l1.637-1.637c.47-.47 1.088-.706 1.704-.706s1.234.236 1.704.706l1.568 1.568a1.026 1.026 0 01.289.878"/></svg><span data-t="nav_integrations">Integrations</span></a><a data-p="demo" onclick="go('demo')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg><span data-t="nav_demo">Demo</span></a><a data-p="packages" onclick="go('packages')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg><span data-t="nav_packages">Packages</span></a><a data-p="proposal" onclick="go('proposal')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg><span data-t="nav_proposal">Proposal</span></a><a data-p="roi" onclick="go('roi')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg><span data-t="nav_roi">ROI</span></a><a data-p="book" onclick="go('book')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span data-t="nav_book">Book</span></a></nav>
+
+<div class="pages">
+  <div class="pg on" id="pg-home"><iframe id="if-home" src="" allow="fullscreen" loading="eager"></iframe></div>
+  <div class="pg" id="pg-solutions"><iframe id="if-solutions" src="about:blank" allow="fullscreen" loading="lazy"></iframe></div>
+  <div class="pg" id="pg-success"><iframe id="if-success" src="about:blank" allow="fullscreen" loading="lazy"></iframe></div>
+  <div class="pg" id="pg-customers"><div style="width:100%;height:100%;overflow:hidden;position:relative"><iframe id="if-customers" src="about:blank" style="width:100%;height:calc(100% + 90px);position:absolute;top:-90px;border:none" allow="fullscreen" loading="lazy"></iframe></div></div>
+  <div class="pg" id="pg-integrations" style="overflow:hidden"><div class="int-pg"><div class="int-c"><div class="int-ind" id="int-ind"></div><div class="int-tabs"><button class="int-tb on" data-t="int_marketplace" onclick="intGo('mk')">Marketplace Integrations</button><button class="int-tb" data-t="int_channels" onclick="intGo('ch')">Distribution Channels</button></div><div class="int-dv"></div><div class="int-body"><div class="int-pn on" id="int-mk"><div style="width:100%;height:100%;overflow:hidden;position:relative"><iframe id="if-int-mk" src="about:blank" style="width:100%;height:calc(100% + 500px);position:absolute;top:-500px;border:none" frameborder="0"></iframe></div></div><div class="int-pn" id="int-ch"><div style="width:100%;height:100%;overflow:hidden;position:relative"><iframe id="if-int-ch" src="about:blank" style="width:100%;height:calc(100% + 500px);position:absolute;top:-500px;border:none" frameborder="0"></iframe></div></div></div></div></div></div>
+  <div class="pg" id="pg-demo"><iframe id="if-demo" src="about:blank" allow="fullscreen" loading="lazy"></iframe></div>
+  <div class="pg" id="pg-packages"><iframe id="if-packages" src="about:blank" allow="fullscreen" loading="lazy"></iframe></div>
+  <div class="pg" id="pg-proposal"></div>
+  <div class="pg" id="pg-roi"><iframe id="if-roi" src="about:blank" allow="fullscreen" loading="lazy"></iframe></div>
+  <div class="pg" id="pg-book"><iframe id="if-book" src="about:blank" allow="fullscreen" loading="lazy"></iframe></div>
+</div>
+
+<div class="adm" id="adm">
+  <a href="?" class="adm-back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Back to Buying Hub</a>
+  <h2>Admin Panel</h2>
+  <div class="adm-tabs"><button class="adm-tab on" onclick="admTab(0)">Rep Management</button><button class="adm-tab" onclick="admTab(1)">Language & Translation</button></div>
+
+  <div class="adm-panel on" id="adm-p0">
+    <p class="sub">Manage scheduling links for your sales team.</p>
+    <div class="adm-card"><div class="adm-form"><div class="adm-f"><label>Rep ID</label><input type="text" id="a-rid" placeholder="e.g. lorenzopickett" style="width:200px"></div><div class="adm-f"><label>SalesLoft Scheduling URL</label><input type="text" id="a-rurl" placeholder="https://meetings.salesloft.com/cloudbeds/..." style="width:360px"></div><button class="adm-btn" onclick="addRep()">Add Rep</button></div><div style="overflow-x:auto"><table><thead><tr><th>Rep ID</th><th>Scheduling URL</th><th>URL Parameter</th><th></th></tr></thead><tbody id="a-tbody"></tbody></table><div id="a-empty" style="display:none;padding:40px;text-align:center;color:var(--cb-chalk-09);font-size:14px">No reps added yet.</div></div></div>
+    <div class="adm-note"><strong>How it works:</strong> Append <code>&amp;rep=repid</code> to the URL.<br><br><strong>Example:</strong> <code>yourdomain.com/?id=DEALHUB_GUID&amp;rep=lorenzopickett&amp;lang=en</code></div>
+  </div>
+
+  <div class="adm-panel" id="adm-p1">
+    <p class="sub">Configure iframe URLs and text translations for each language. Changes save automatically.</p>
+
+    <div class="lang-section"><h3>Iframe URLs</h3><p>Set the iframe source for each page per language.</p>
+      <div class="adm-card" id="adm-urls"></div>
+    </div>
+
+    <div class="lang-section"><h3>Text Translations</h3><p>Translate all UI labels. Leave blank to use English default.</p>
+      <div class="adm-card" id="adm-texts"></div>
+    </div>
+
+    <div class="adm-note"><strong>URL parameter:</strong> Append <code>&amp;lang=pt</code> or <code>&amp;lang=es</code> to set the language. Default is <code>en</code>.</div>
+
+    <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+      <button class="adm-btn" onclick="exportCode()">Copy Code to Clipboard</button>
+      <button class="adm-btn" style="background:var(--cb-blue-07);color:white" onclick="downloadFile()">Download Updated HTML</button>
+    </div>
+    <div id="export-msg" style="display:none;margin-top:12px;padding:12px 16px;background:#D7EDB8;border-radius:6px;font-size:13px;color:#3A533A;font-weight:500"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+var P=new URLSearchParams(location.search),dealId=P.get('id'),repId=P.get('rep'),pg=P.get('page'),langParam=P.get('lang');
+
+// ── Language System ──
+var LANGS=['en','pt','es'];
+var LANG_NAMES={en:'English',pt:'Português',es:'Español'};
+var LANG_KEY='cb_hub_lang';
+
+// Default iframe URLs
+var DEFAULT_URLS={
+  home:{en:'https://s.tiled.co/Om9e5/cloudbeds-2-0-en/',pt:'https://s.tiled.co/Om9e5/cloudbeds-2-0-en/',es:'https://s.tiled.co/Om9e5/cloudbeds-2-0-en/'},
+  solutions:{en:'https://s.tiled.co/myg-y5/cloudbeds-2-0-en/our-solutions-products',pt:'https://s.tiled.co/myg-y5/cloudbeds-2-0-en/our-solutions-products',es:'https://s.tiled.co/myg-y5/cloudbeds-2-0-en/our-solutions-products'},
+  success:{en:'https://s.tiled.co/1VaJiU5/cloudbeds-2-0-en/customer-success-partner',pt:'https://s.tiled.co/1VaJiU5/cloudbeds-2-0-en/customer-success-partner',es:'https://s.tiled.co/1VaJiU5/cloudbeds-2-0-en/customer-success-partner'},
+  customers:{en:'https://www.cloudbeds.com/customers/',pt:'https://www.cloudbeds.com/pt-br/customers/',es:'https://www.cloudbeds.com/es/customers/'},
+  int_mk:{en:'https://www.cloudbeds.com/integrations/',pt:'https://www.cloudbeds.com/pt-br/integrations/',es:'https://www.cloudbeds.com/es/integrations/'},
+  int_ch:{en:'https://www.cloudbeds.com/channels/',pt:'https://www.cloudbeds.com/pt-br/channels/',es:'https://www.cloudbeds.com/es/channels/'},
+  demo:{en:'https://app.guideflow.com/player/6kw7o9xbzp',pt:'https://app.guideflow.com/player/6kw7o9xbzp',es:'https://app.guideflow.com/player/6kw7o9xbzp'},
+  packages:{en:'https://wjohnson98.github.io/CB-Packages/',pt:'https://wjohnson98.github.io/CB-Packages/',es:'https://wjohnson98.github.io/CB-Packages/'},
+  roi:{en:'https://wjohnson98.github.io/ROI-Calculator/',pt:'https://wjohnson98.github.io/ROI-Calculator/',es:'https://wjohnson98.github.io/ROI-Calculator/'}
+};
+
+// Default text translations
+var DEFAULT_TEXTS={
+  badge:{en:'Buying Hub',pt:'Hub de Compras',es:'Hub de Compra'},
+  bookBtn:{en:'Book a Meeting',pt:'Agendar Reunião',es:'Reservar Reunión'},
+  nav_home:{en:'Home',pt:'Início',es:'Inicio'},
+  nav_solutions:{en:'Solutions',pt:'Soluções',es:'Soluciones'},
+  nav_success:{en:'Success',pt:'Sucesso',es:'Éxito'},
+  nav_customers:{en:'Customers',pt:'Clientes',es:'Clientes'},
+  nav_integrations:{en:'Integrations',pt:'Integrações',es:'Integraciones'},
+  nav_demo:{en:'Demo',pt:'Demo',es:'Demo'},
+  nav_packages:{en:'Packages',pt:'Paquetes',es:'Paquetes'},
+  nav_proposal:{en:'Proposal',pt:'Proposta',es:'Propuesta'},
+  nav_roi:{en:'ROI',pt:'ROI',es:'ROI'},
+  nav_book:{en:'Book',pt:'Agendar',es:'Reservar'},
+  int_marketplace:{en:'Marketplace Integrations',pt:'Integrações do Marketplace',es:'Integraciones del Marketplace'},
+  int_channels:{en:'Distribution Channels',pt:'Canais de Distribuição',es:'Canales de Distribución'},
+  prop_title:{en:'Your Custom Proposal',pt:'Sua Proposta Personalizada',es:'Su Propuesta Personalizada'},
+  prop_desc_deal:{en:"We've prepared a tailored Cloudbeds package based on your property's unique needs. Review your customized pricing, selected modules, implementation timeline, and terms — then sign digitally when you're ready.",pt:'Preparamos um pacote Cloudbeds personalizado para as necessidades da sua propriedade. Revise preços, módulos, cronograma e termos — e assine digitalmente quando estiver pronto.',es:'Hemos preparado un paquete Cloudbeds adaptado a las necesidades de su propiedad. Revise precios, módulos, cronograma y términos — y firme digitalmente cuando esté listo.'},
+  prop_desc_nodeal:{en:"Your personalized Cloudbeds proposal is being prepared by your sales representative. Once it's ready, you'll review pricing, terms, and sign — all right here.",pt:'Sua proposta personalizada está sendo preparada pelo seu representante de vendas. Quando estiver pronta, você poderá revisar e assinar aqui.',es:'Su propuesta personalizada está siendo preparada por su representante de ventas. Cuando esté lista, podrá revisar y firmar aquí.'},
+  prop_check1:{en:'Customized pricing',pt:'Preços personalizados',es:'Precios personalizados'},
+  prop_check2:{en:'Package details',pt:'Detalhes do pacote',es:'Detalles del paquete'},
+  prop_check3:{en:'Implementation timeline',pt:'Cronograma de implementação',es:'Cronograma de implementación'},
+  prop_check4:{en:'E-signature ready',pt:'Assinatura digital',es:'Firma electrónica'},
+  prop_viewbtn:{en:'View Your Proposal',pt:'Ver Sua Proposta',es:'Ver Su Propuesta'},
+  prop_note:{en:'Opens in a new tab · Hosted securely on DealHub',pt:'Abre em nova aba · Hospedado com segurança no DealHub',es:'Abre en nueva pestaña · Alojado de forma segura en DealHub'},
+  prop_bookbtn:{en:'Book a Meeting to Get Started',pt:'Agendar Reunião para Começar',es:'Reservar Reunión para Empezar'},
+  prop_stat1:{en:'Properties worldwide',pt:'Propriedades no mundo',es:'Propiedades en el mundo'},
+  prop_stat2:{en:'Countries',pt:'Países',es:'Países'},
+  prop_stat3:{en:'HotelTechReport winner',pt:'Vencedor HotelTechReport',es:'Ganador HotelTechReport'},
+  prop_stat4:{en:'Faster staff training',pt:'Treinamento mais rápido',es:'Capacitación más rápida'},
+  prop_foot:{en:"Cloudbeds is hospitality's only intelligent growth engine — a unified platform trusted by the world's most ambitious hoteliers across 150 countries.",pt:'Cloudbeds é o único motor de crescimento inteligente da hotelaria — uma plataforma unificada usada pelos hoteleiros mais ambiciosos em 150 países.',es:'Cloudbeds es el único motor de crecimiento inteligente de la hotelería — una plataforma unificada utilizada por los hoteleros más ambiciosos en 150 países.'}
+};
+
+function loadLang(){try{var s=localStorage.getItem(LANG_KEY);if(s)return JSON.parse(s)}catch(e){}return{urls:{},texts:{}}}
+function saveLang(d){try{localStorage.setItem(LANG_KEY,JSON.stringify(d))}catch(e){}}
+var langData=loadLang();
+function getUrl(page,lang){return(langData.urls[page]&&langData.urls[page][lang])||DEFAULT_URLS[page][lang]||DEFAULT_URLS[page].en}
+function getTxt(key,lang){return(langData.texts[key]&&langData.texts[key][lang])||DEFAULT_TEXTS[key][lang]||DEFAULT_TEXTS[key].en}
+
+var curLang=langParam&&LANGS.indexOf(langParam)>=0?langParam:'en';
+
+// ── Apply Language ──
+function applyLang(lang){
+  curLang=lang;
+  document.getElementById('langBtnLabel').innerHTML=lang.toUpperCase()+' <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 256 256" width="14" height="14" fill="currentColor"><path d="M128,26A102,102,0,1,0,230,128,102.12,102.12,0,0,0,128,26Zm81.57,64H169.19a132.58,132.58,0,0,0-25.73-50.67A90.29,90.29,0,0,1,209.57,90ZM218,128a89.7,89.7,0,0,1-3.83,26H171.81a155.43,155.43,0,0,0,0-52h42.36A89.7,89.7,0,0,1,218,128Zm-90,87.83a110,110,0,0,1-15.19-19.45A124.24,124.24,0,0,1,99.35,166h57.3a124.24,124.24,0,0,1-13.46,30.38A110,110,0,0,1,128,215.83ZM96.45,154a139.18,139.18,0,0,1,0-52h63.1a139.18,139.18,0,0,1,0,52ZM38,128a89.7,89.7,0,0,1,3.83-26H84.19a155.43,155.43,0,0,0,0,52H41.83A89.7,89.7,0,0,1,38,128Zm90-87.83a110,110,0,0,1,15.19,19.45A124.24,124.24,0,0,1,156.65,90H99.35a124.24,124.24,0,0,1,13.46-30.38A110,110,0,0,1,128,40.17Zm-15.46-.84A132.58,132.58,0,0,0,86.81,90H46.43A90.29,90.29,0,0,1,112.54,39.33ZM46.43,166H86.81a132.58,132.58,0,0,0,25.73,50.67A90.29,90.29,0,0,1,46.43,166Zm97,50.67A132.58,132.58,0,0,0,169.19,166h40.38A90.29,90.29,0,0,1,143.46,216.67Z"/></svg>';
+  document.querySelectorAll('[data-t]').forEach(function(el){
+    var k=el.getAttribute('data-t');
+    var txt=getTxt(k,lang);
+    if(txt){
+      if(el.tagName==='BUTTON'||el.tagName==='A'){
+        var svgs=el.querySelectorAll('svg');
+        if(svgs.length&&el.getAttribute('data-p')==null){
+          var s='';svgs.forEach(function(sv){s+=sv.outerHTML});
+          el.innerHTML=txt+' '+s;
+        }else{el.textContent=txt}
+      }else{el.textContent=txt}
+    }
+  });
+  var menu=document.getElementById('langMenu');
+  menu.innerHTML=LANGS.map(function(l){return'<button class="lang-opt'+(l===lang?' on':'')+'" onclick="setLang(\''+l+'\')">'+LANG_NAMES[l]+'</button>'}).join('');
+  document.getElementById('if-home').src=getUrl('home',lang);
+  loaded={home:true};
+  var lazyPages=['solutions','success','customers','demo','packages','roi'];
+  lazyPages.forEach(function(p){
+    var f=document.getElementById('if-'+p);
+    if(f){f.src='about:blank';f.setAttribute('data-src',getUrl(p,lang))}
+  });
+  document.getElementById('if-int-mk').src='about:blank';
+  document.getElementById('if-int-mk').setAttribute('data-src',getUrl('int_mk',lang));
+  document.getElementById('if-int-ch').src='about:blank';
+  document.getElementById('if-int-ch').setAttribute('data-src',getUrl('int_ch',lang));
+  iL={};
+  if(cur!=='home'){
+    var nxt=document.getElementById('pg-'+cur);
+    if(nxt){var f=nxt.querySelector('iframe[data-src]');if(f){f.src=f.getAttribute('data-src');f.removeAttribute('data-src');loaded[cur]=true}}
+  }
+  buildProposal();
+  var bf=document.getElementById('if-book');
+  if(bf){bf.src='about:blank';bf.setAttribute('data-src',schedLink);if(cur==='book'){bf.src=schedLink;loaded.book=true}}
+  document.getElementById('langDd').classList.remove('open');
+}
+window.setLang=function(l){applyLang(l)};
+
+document.addEventListener('click',function(e){if(!document.getElementById('langDd').contains(e.target))document.getElementById('langDd').classList.remove('open')});
+
+// ── Rep Database ──
+var SK='cb_hub_reps',DR={'lorenzopickett':'https://meetings.salesloft.com/cloudbeds/lorenzopickett'};
+function lr(){try{var s=localStorage.getItem(SK);if(s)return JSON.parse(s)}catch(e){}return Object.assign({},DR)}
+function sr(r){try{localStorage.setItem(SK,JSON.stringify(r))}catch(e){}}
+var RL=lr();
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+// ── Admin ──
+if(pg==='admin'){document.querySelector('.pages').style.display='none';document.getElementById('sidebar').style.display='none';document.getElementById('mobnav').style.display='none';document.getElementById('adm').classList.add('on');art();buildAdmLang()}
+function art(){var tb=document.getElementById('a-tbody'),em=document.getElementById('a-empty'),k=Object.keys(RL);if(!k.length){tb.innerHTML='';em.style.display='block';return}em.style.display='none';tb.innerHTML=k.map(function(id){return'<tr><td><strong>'+esc(id)+'</strong></td><td class="uc">'+esc(RL[id])+'</td><td class="uc"><code>&amp;rep='+esc(id)+'</code></td><td><button class="adm-del" onclick="delRep(\''+esc(id)+'\')">Remove</button></td></tr>'}).join('')}
+window.addRep=function(){var i=document.getElementById('a-rid'),u=document.getElementById('a-rurl'),id=(i.value||'').trim().toLowerCase(),url=(u.value||'').trim();if(!id||!url){alert('Fill both fields.');return}if(!url.startsWith('http')){alert('URL must start with http');return}RL[id]=url;sr(RL);i.value='';u.value='';art()};
+window.delRep=function(id){if(!confirm('Remove "'+id+'"?'))return;delete RL[id];sr(RL);art()};
+window.admTab=function(i){document.querySelectorAll('.adm-tab').forEach(function(t,j){t.classList.toggle('on',j===i)});document.querySelectorAll('.adm-panel').forEach(function(p,j){p.classList.toggle('on',j===i)})};
+
+// ── Admin Language Panel ──
+function buildAdmLang(){
+  var urlPages=[{key:'home',label:'Home'},{key:'solutions',label:'Solutions'},{key:'success',label:'Success'},{key:'customers',label:'Customers'},{key:'int_mk',label:'Integrations: Marketplace'},{key:'int_ch',label:'Integrations: Channels'},{key:'demo',label:'Demo'},{key:'packages',label:'Packages'},{key:'roi',label:'ROI'}];
+  var h='<div class="lang-grid"><div class="lang-grid-hdr">Page</div><div class="lang-grid-hdr">EN</div><div class="lang-grid-hdr">PT</div><div class="lang-grid-hdr">ES</div></div>';
+  urlPages.forEach(function(p){
+    h+='<div class="lang-grid"><div class="lbl">'+p.label+'</div>';
+    LANGS.forEach(function(l){
+      var v=getUrl(p.key,l);
+      h+='<input type="text" value="'+esc(v)+'" data-url-key="'+p.key+'" data-url-lang="'+l+'" onchange="saveLangUrl(this)">';
+    });
+    h+='</div>';
+  });
+  document.getElementById('adm-urls').innerHTML=h;
+
+  var textKeys=Object.keys(DEFAULT_TEXTS);
+  var h2='<div class="lang-grid"><div class="lang-grid-hdr">Key</div><div class="lang-grid-hdr">EN</div><div class="lang-grid-hdr">PT</div><div class="lang-grid-hdr">ES</div></div>';
+  textKeys.forEach(function(k){
+    h2+='<div class="lang-grid"><div class="lbl">'+k+'</div>';
+    LANGS.forEach(function(l){
+      var v=getTxt(k,l);
+      h2+='<input type="text" value="'+esc(v)+'" data-txt-key="'+k+'" data-txt-lang="'+l+'" onchange="saveLangTxt(this)">';
+    });
+    h2+='</div>';
+  });
+  document.getElementById('adm-texts').innerHTML=h2;
+}
+window.saveLangUrl=function(el){
+  var k=el.getAttribute('data-url-key'),l=el.getAttribute('data-url-lang');
+  if(!langData.urls[k])langData.urls[k]={};
+  langData.urls[k][l]=el.value.trim();
+  saveLang(langData);
+};
+window.saveLangTxt=function(el){
+  var k=el.getAttribute('data-txt-key'),l=el.getAttribute('data-txt-lang');
+  if(!langData.texts[k])langData.texts[k]={};
+  langData.texts[k][l]=el.value.trim();
+  saveLang(langData);
+};
+
+// ── Export / Download ──
+function gatherAdminValues(){
+  var urls={},texts={};
+  document.querySelectorAll('[data-url-key]').forEach(function(el){
+    var k=el.getAttribute('data-url-key'),l=el.getAttribute('data-url-lang'),v=el.value.trim();
+    if(!urls[k])urls[k]={};
+    urls[k][l]=v;
+  });
+  document.querySelectorAll('[data-txt-key]').forEach(function(el){
+    var k=el.getAttribute('data-txt-key'),l=el.getAttribute('data-txt-lang'),v=el.value.trim();
+    if(!texts[k])texts[k]={};
+    texts[k][l]=v;
+  });
+  return{urls:urls,texts:texts};
+}
+function objToJS(name,obj){
+  var lines=['var '+name+'={'];
+  var keys=Object.keys(obj);
+  keys.forEach(function(k,i){
+    var inner=obj[k],langs=Object.keys(inner);
+    var pairs=langs.map(function(l){
+      var v=inner[l].replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+      return l+":'"+v+"'"
+    });
+    lines.push('  '+k+':{'+pairs.join(',')+'}' +(i<keys.length-1?',':''));
+  });
+  lines.push('};');
+  return lines.join('\n');
+}
+function showMsg(txt){var m=document.getElementById('export-msg');m.textContent=txt;m.style.display='block';setTimeout(function(){m.style.display='none'},4000)}
+window.exportCode=function(){
+  var d=gatherAdminValues();
+  var code=objToJS('DEFAULT_URLS',d.urls)+'\n\n'+objToJS('DEFAULT_TEXTS',d.texts);
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(code).then(function(){showMsg('Copied to clipboard! Paste into your source code to replace the existing DEFAULT_URLS and DEFAULT_TEXTS.')}).catch(function(){prompt('Copy the code below:',code)});
+  }else{prompt('Copy the code below:',code)}
+};
+window.downloadFile=function(){
+  var d=gatherAdminValues();
+  var html=document.documentElement.outerHTML;
+  html=html.replace(/var DEFAULT_URLS=\{[\s\S]*?\};/,objToJS('DEFAULT_URLS',d.urls));
+  html=html.replace(/var DEFAULT_TEXTS=\{[\s\S]*?\};/,objToJS('DEFAULT_TEXTS',d.texts));
+  var blob=new Blob(['<!DOCTYPE html>\n'+html],{type:'text/html'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='index.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showMsg('Downloaded! Replace your hosted index.html with this file.');
+};
+
+// ── Scheduling link ──
+var dl='https://meetings.salesloft.com/cloudbeds/lorenzopickett',schedLink=dl;
+if(repId&&RL[repId.toLowerCase()])schedLink=RL[repId.toLowerCase()];
+
+// ── Build Proposal ──
+function buildProposal(){
+  var pp=document.getElementById('pg-proposal'),dh='https://go-dealroom.dealhub.io/dealhub#!/hub?dealGUID=';
+  var ck='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>';
+  var L=curLang;
+  var st='<div class="prop-stats"><div class="prop-st"><b>26,000+</b><small>'+getTxt('prop_stat1',L)+'</small></div><div class="prop-st"><b>150</b><small>'+getTxt('prop_stat2',L)+'</small></div><div class="prop-st"><b>7x</b><small>'+getTxt('prop_stat3',L)+'</small></div><div class="prop-st"><b>88%</b><small>'+getTxt('prop_stat4',L)+'</small></div></div>';
+  var ft='<p class="prop-foot">'+getTxt('prop_foot',L)+'</p>';
+  if(pp){
+    if(dealId){var du=dh+encodeURIComponent(dealId);pp.innerHTML='<div class="prop"><div class="prop-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h1>'+getTxt('prop_title',L)+'</h1><p class="prop-desc">'+getTxt('prop_desc_deal',L)+'</p><div class="prop-checks"><span class="prop-chk">'+ck+getTxt('prop_check1',L)+'</span><span class="prop-chk">'+ck+getTxt('prop_check2',L)+'</span><span class="prop-chk">'+ck+getTxt('prop_check3',L)+'</span><span class="prop-chk">'+ck+getTxt('prop_check4',L)+'</span></div><a href="'+du+'" target="_blank" rel="noopener noreferrer" class="prop-btn">'+getTxt('prop_viewbtn',L)+' <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a><p class="prop-note">'+getTxt('prop_note',L)+'</p><div class="prop-hr"></div>'+st+ft+'</div>'}
+    else{pp.innerHTML='<div class="prop"><div class="prop-icon amber"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h1>'+getTxt('prop_title',L)+'</h1><p class="prop-desc">'+getTxt('prop_desc_nodeal',L)+'</p><div class="prop-checks"><span class="prop-chk">'+ck+getTxt('prop_check1',L)+'</span><span class="prop-chk">'+ck+getTxt('prop_check2',L)+'</span><span class="prop-chk">'+ck+getTxt('prop_check3',L)+'</span><span class="prop-chk">'+ck+getTxt('prop_check4',L)+'</span></div><a class="prop-btn" onclick="go(\'book\')">'+getTxt('prop_bookbtn',L)+'</a><div class="prop-hr"></div>'+st+ft+'</div>'}
+  }
+}
+
+// ── Integrations tabs ──
+var iL={};
+function intUpd(){var a=document.querySelector('.int-tb.on'),ind=document.getElementById('int-ind'),c=a&&a.closest('.int-c');if(a&&ind&&c){var cr=c.getBoundingClientRect(),tr=a.getBoundingClientRect();ind.style.left=(tr.left-cr.left)+'px';ind.style.width=tr.width+'px'}}
+window.intGo=function(t){document.querySelectorAll('.int-tb').forEach(function(b,i){b.classList.toggle('on',i===(t==='mk'?0:1))});document.querySelectorAll('.int-pn').forEach(function(p){p.classList.remove('on')});var pn=document.getElementById('int-'+t);if(pn){if(!iL[t]){var f=pn.querySelector('iframe[data-src]');if(f){f.src=f.getAttribute('data-src');f.removeAttribute('data-src')}iL[t]=true}setTimeout(function(){pn.classList.add('on')},50)}intUpd()};
+var iO=new MutationObserver(function(){if(document.getElementById('pg-integrations').classList.contains('on')){intUpd();iO.disconnect()}});
+iO.observe(document.getElementById('pg-integrations'),{attributes:true,attributeFilter:['class']});
+
+// ── Navigation ──
+var cur='home',loaded={home:true};
+window.go=function(id){
+  if(id===cur)return;
+  var c=document.getElementById('pg-'+cur);if(c)c.classList.remove('on');
+  cur=id;
+  var n=document.getElementById('pg-'+id);
+  if(n){if(!loaded[id]){var f=n.querySelector('iframe[data-src]');if(f){f.src=f.getAttribute('data-src');f.removeAttribute('data-src')}loaded[id]=true}setTimeout(function(){n.classList.add('on')},50)}
+  document.querySelectorAll('[data-p]').forEach(function(a){a.classList.toggle('on',a.getAttribute('data-p')===id)});
+  if(n)n.scrollTop=0;
+};
+
+// ── Init ──
+applyLang(curLang);
+})();
+</script>
+</body>
+</html>
